@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Верхня частина сайту петицій</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: "Inter", "Noto Sans", Roboto, system-ui, -apple-system,
+                         "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #212529;
+            line-height: 1.35;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 600px; 
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee; 
+        }
+
+        .site-logo-container {
+            width: 34.8px;
+            height: 34.8px;
+            margin-right: 15px;
+            border-radius: 4px;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0; 
+        }
+
+        .site-logo {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+        }
+
+        .site-title-block {
+            flex-grow: 1;
+            padding-top: 2px;
+            margin-right: 10px; 
+        }
+
+        .site-title {
+            font-size: 15.66px; 
+            font-weight: 500; 
+            color: #212529;
+            margin-bottom: 0px; 
+            line-height: 1.35; 
+        }
+
+        .site-subtitle {
+            font-size: 15.66px; 
+            font-weight: 400; 
+            color: #212529;
+            line-height: 1.35; 
+        }
+
+        .menu-icon-container {
+            width: 40px;
+            height: 40px;
+            background-color: #213555; 
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto; 
+            flex-shrink: 0; 
+            cursor: pointer; /* Added cursor pointer */
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .header-separator {
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 15px;
+        }
+
+        .content-block {
+            padding: 0 15px; 
+        }
+
+        .breadcrumb {
+            font-size: 16px;
+            font-weight: 400;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb a {
+            color: #212529;
+            text-decoration: none;
+        }
+
+        .breadcrumb .arrow {
+            color: #f0b90b;
+            margin: 0 5px;
+            font-weight: 700;
+        }
+
+        .petition-main-title-duplicate {
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.35;
+        }
+
+        .petition-main-title-duplicate span {
+            display: block;
+        }
+
+        .petition-number {
+            font-size: 16px;
+            font-weight: 500;
+            color: #212529;
+            margin: 40px 0 30px 0; 
+            line-height: 1.35;
+        }
+
+        .petition-main-title {
+            font-size: 23px; 
+            font-weight: 600; 
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .petition-main-title span {
+            display: block;
+        }
+
+        .petition-details-block {
+            margin-top: 30px; 
+            padding-bottom: 30px; 
+            border-bottom: 1px solid #dee2e6;
+            font-size: 16px;
+            font-weight: 400; 
+            color: #212529;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center; 
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .icon-person {
+            background-image: url('https://img.icons8.com/ios11/512/FAB005/user-male.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .icon-plus {
+            font-size: 20px; 
+            color: #f0b90b;
+            font-weight: 700; 
+        }
+
+        .petition-tabs {
+            text-align: center;
+            padding: 20px 0; 
+        }
+
+        .tab-item {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 16px; 
+            font-weight: 400;
+            color: #a0a0a0;
+            padding-bottom: 5px;
+        }
+
+        .tab-item.active {
+            color: #212529;
+            font-weight: 600;
+            border-bottom: 3px solid #f0b90b;
+        }
+
+        .petition-text-content {
+            padding: 20px 15px 15px 15px; 
+            line-height: 1.5; 
+            color: #212529;
+        }
+
+        .petition-text-content p {
+            margin-bottom: 1em; 
+            text-align: left; 
+            font-size: 18.4px;
+            font-weight: 400; 
+            line-height: 1.45; 
+        }
+
+        /* === ОБНОВЛЕННЫЙ БЛОК ПРОГРЕССА === */
+        .petition-progress-block {
+            margin: 20px 15px 30px 15px; 
+            padding: 20px 15px 20px 15px;
+            border: 1px solid #dee2e6; 
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #0056b3 0deg 121deg,
+                #e0e0e0 121deg 360deg
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .progress-inner-circle {
+            position: absolute;
+            width: 86%;
+            height: 86%;
+            background-color: #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .progress-votes-count {
+            font-size: 64px;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 5px;
+        }
+
+        .progress-votes-info {
+            font-size: 20px;
+            font-weight: 400;
+            color: #212529;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 480px) {
+            .progress-circle {
+                width: 160px;
+                height: 160px;
+            }
+            .progress-votes-count {
+                font-size: 48px;
+            }
+            .progress-votes-info {
+                font-size: 16px;
+            }
+        }
+
+        .status-line {
+            display: flex;
+            font-size: 16px; 
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .status-label {
+            color: #f0b90b; 
+            font-weight: 500; 
+            margin-right: 8px;
+        }
+
+        .remaining-days {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .progress-bar-container {
+            height: 5px;
+            background-color: #dee2e6; 
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 30.25%; 
+            background-color: #f0b90b; 
+            border-radius: 3px;
+        }
+
+        .auth-prompt-block {
+            margin-top: 20px; 
+            padding: 20px;
+            border: 2px solid #800000; 
+            border-radius: 4px; 
+            text-align: center;
+            font-size: 18px; 
+            color: #800000; 
+        }
+
+        .auth-prompt-block .auth-link {
+            text-decoration: underline dotted #800000; 
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-size: 16px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .petition-name-after-title {
+            font-size: 23px; 
+            font-weight: 400;
+            line-height: 1.35;
+            margin-bottom: 30px;
+        }
+
+        .social-share-container {
+            display: flex;
+            gap: 20px; /* Increased gap */
+            margin: 15px 0 30px;
+        }
+
+        .social-icon-button {
+            width: 60px; /* Increased size */
+            height: 60px; /* Increased size */
+            border-radius: 50%;
+            border: 2px solid #e0e0e0; /* Thicker border */
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-icon-button:hover {
+            background-color: #f7f7f7;
+            transform: scale(1.05);
+        }
+
+        .social-icon-button svg {
+            width: 22px; /* Increased icon size */
+            height: 22px; /* Increased icon size */
+        }
+
+        .copy-url-text {
+            font-size: 16px;
+            margin-bottom: 30px; 
+        }
+
+        .add-to-favorite-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            margin: 30px auto;
+            padding: 10px 15px;
+            background-color: #fce899;
+            border: none;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #212529;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .add-to-favorite-button .heart-icon {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        /* === Стили для добавленного блока (как на скриншоте) === */
+        .footer-info {
+            padding: 40px 15px 40px 15px; 
+            text-align: center; 
+            font-size: 16px; 
+            line-height: 1.5;
+            color: #212529;
+            border-top: 1px solid #dee2e6; 
+            margin-top: 40px; 
+        }
+
+        .copyright-text {
+            font-size: 14px; 
+            margin-bottom: 30px; 
+            line-height: 1.6; 
+            font-weight: 400;
+        }
+        
+        .copyright-text span {
+            display: block;
+        }
+
+        .footer-link {
+            display: block;
+            text-decoration: none;
+            color: #212529; 
+            font-size: 18px; 
+            margin-bottom: 25px; 
+            font-weight: 400; 
+            text-transform: none;
+        }
+
+        .footer-link:last-child {
+            margin-bottom: 0;
+        }
+    
+        /* FULLSCREEN MENU - CENTERED & VISIBLE CLOSE */
+        .fullscreen-menu {
+          position: fixed;
+          inset: 0;
+          background: #213555;
+          color: #fff;
+          display: none;
+          z-index: 2147483647;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          box-sizing: border-box;
+          padding: 40px 20px 60px;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+        }
+        .fullscreen-menu.active { display: flex; }
+        .fullscreen-menu .menu-close {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          border: 3px solid rgba(255,255,255,0.95);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 26px;
+          line-height: 1;
+          cursor: pointer;
+          background: transparent;
+          z-index: 2147483650;
+          box-sizing: border-box;
+        }
+        .fullscreen-menu .menu-content {
+          width: 100%;
+          max-width: 720px;
+          margin: 0 auto;
+          text-align: center;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+        .fullscreen-menu .menu-header { font-size: 30px; line-height: 1.08; margin-top: 8px; font-weight: 500; }
+        .fullscreen-menu .menu-subheader { margin: 18px 0; font-size: 20px; }
+        .fullscreen-menu .menu-subheader a { color: #fff; text-decoration: none; margin: 0 6px; }
+        .fullscreen-menu .create-petition-btn { background: #FFD500; color: #213555; border: none; border-radius: 40px; padding: 14px 44px; font-size: 20px; font-weight: 700; margin: 20px 0; cursor: pointer; }
+        .fullscreen-menu .search-box { display:flex; align-items:center; background:#fff; border-radius:30px; overflow:hidden; width:100%; max-width:720px; margin: 18px auto; box-sizing:border-box; }
+        .fullscreen-menu .search-box input { flex:1; border:0; outline:0; padding:16px 18px; font-size:20px; color:#333; background:transparent; }
+        .fullscreen-menu .search-box button { background:none; border:0; font-size:22px; color:#213555; padding:12px 18px; cursor:pointer; }
+        .fullscreen-menu .menu-links { margin-top:26px; width:100%; max-width:720px; margin-left:auto; margin-right:auto; box-sizing:border-box; }
+        .fullscreen-menu .menu-link { display:block; padding:20px 10px; border-bottom:1px solid rgba(255,255,255,0.08); text-align:center; color:#fff; font-size:22px; text-decoration:none; font-weight:600; letter-spacing:1px; }
+        .fullscreen-menu .menu-link.active { border-bottom:4px solid #FFD500; padding-bottom:16px; }
+        body.menu-open { overflow: hidden !important; height: 100%; }
+        @media (max-width:420px) {
+          .fullscreen-menu .menu-header { font-size: 26px; }
+          .fullscreen-menu .menu-link { font-size: 18px; padding:16px 8px; }
+          .fullscreen-menu .create-petition-btn { padding: 12px 30px; font-size:18px; }
+        }
+
+        /* === Стили для модального окна авторизации (по запросу) === */
+        .auth-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .auth-modal-overlay.active {
+            display: flex;
+        }
+
+        .auth-modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 600px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            max-height: 100%; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header for the modal - back arrow, logo, language */
+        .auth-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .auth-modal-back-arrow {
+            font-size: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .auth-modal-id-gov-ua {
+            display: flex;
+            align-items: center;
+        }
+        
+        .auth-modal-id-gov-ua img {
+            height: 30px; 
+            margin-right: 5px;
+        }
+        
+        .auth-modal-id-gov-ua span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin-right: 15px;
+        }
+
+        .auth-modal-lang-switcher {
+            font-size: 14px;
+            color: #555;
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .auth-modal-lang-switcher span.active-lang {
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .auth-modal-lang-switcher a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .auth-modal-body {
+            padding: 20px 15px 40px;
+        }
+
+        .auth-modal-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .auth-modal-line {
+            border-bottom: 1px solid #dee2e6;
+            margin: 20px 0;
+        }
+
+        /* Authentication options */
+        .auth-option {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.35;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+        
+        .auth-option-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .auth-option-label {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 400;
+            flex-grow: 1;
+        }
+
+        .auth-option-sub-options {
+            padding-left: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .auth-option-sub-options p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-option-sub-options .arrow-icon-small {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #212529; 
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .auth-option-sub-options .disabled-text {
+            color: #a0a0a0; 
+            font-style: italic;
+        }
+        
+        .auth-option-sub-options .disabled-arrow {
+            color: #a0a0a0; 
+        }
+
+        .auth-arrow {
+            font-size: 28px;
+            color: #212529;
+            font-weight: 700;
+            line-height: 1;
+            margin-left: 10px;
+        }
+        
+        /* Specific style for Bank ID and Diia */
+        .auth-option.bank-id-option,
+        .auth-option.diia-pidpys-option {
+            padding: 25px 0 10px 0; 
+            font-weight: 500;
+        }
+        
+        .auth-option.bank-id-option .auth-arrow,
+        .auth-option.diia-pidpys-option .auth-arrow {
+            font-size: 32px; 
+        }
+        
+        .auth-option.bank-id-option .auth-option-label,
+        .auth-option.diia-pidpys-option .auth-option-label {
+            font-size: 26px; 
+            font-weight: 400; 
+        }
+
+        .auth-option.diia-pidpys-option {
+            cursor: default; /* Not clickable if disabled */
+            opacity: 0.6; /* Visual cue for disabled */
+        }
+        
+        .auth-option.diia-pidpys-option .auth-option-label {
+            color: #a0a0a0;
+        }
+
+        @media (max-width: 480px) {
+            .auth-modal-title {
+                font-size: 24px;
+            }
+            .auth-option-label,
+            .auth-option.bank-id-option .auth-option-label,
+            .auth-option.diia-pidpys-option .auth-option-label {
+                font-size: 20px;
+            }
+            .auth-arrow,
+            .auth-option.bank-id-option .auth-arrow,
+            .auth-option.diia-pidpys-option .auth-arrow {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div aria-hidden="true" aria-label="Головне меню" class="fullscreen-menu" id="fullscreenMenu" role="dialog">
+<div aria-hidden="false" class="menu-close" id="closeMenu" title="Закрити меню">×</div>
+<div class="menu-content">
+<div class="menu-header">
+      На головну сторінку<br/>Офіційного інтернет-<br/>представництва Президента України
+    </div>
+<div class="menu-subheader">
+<a href="#">Допомога</a> | <a href="#">Вхід / Реєстрація</a>
+</div>
+<button class="create-petition-btn" id="openAuthModalBtn" type="button">+ СТВОРИТИ ПЕТИЦІЮ</button>
+<div aria-label="Пошук" class="search-box" role="search">
+<input aria-label="Введіть пошуковий запит" placeholder="Шукати електронні петиції" type="search"/>
+<button aria-label="Пошук" type="button">🔍</button>
+</div>
+<nav aria-label="Меню розділів" class="menu-links">
+<a class="menu-link active" href="#">ТРИВАЄ ЗБІР ПІДПИСІВ</a>
+<a class="menu-link" href="#">НА РОЗГЛЯДІ</a>
+<a class="menu-link" href="#">З ВІДПОВІДДЮ</a>
+<a class="menu-link" href="#">УСІ ЕЛЕКТРОННІ ПЕТИЦІЇ (ПОШУК)</a>
+</nav>
+</div>
+</div>
+<div aria-modal="true" class="auth-modal-overlay" id="authModal" role="dialog">
+<div class="auth-modal-content">
+<div class="auth-modal-header">
+<div class="auth-modal-back-arrow" id="closeAuthModal">←</div>
+<div class="auth-modal-id-gov-ua">
+<img alt="ID.GOV.UA Logo" src="https://i.ibb.co/6P83j60/ID-GOV-UA.png"/>
+<span>UA</span> | <a href="#">EN</a>
+</div>
+</div>
+
+<div class="auth-modal-body">
+<h1 class="auth-modal-title">Увійти за допомогою</h1>
+
+<div class="auth-option electronic-signature">
+<div class="auth-option-content">
+<div class="auth-option-label">Електронного підпису</div>
+<span class="auth-arrow">→</span>
+</div>
+<div class="auth-option-sub-options">
+<p><span class="arrow-icon-small">→</span> Файловий носій</p>
+<p><span class="arrow-icon-small">→</span> Токен</p>
+<p><span class="arrow-icon-small">→</span> Хмарне сховище</p>
+</div>
+</div>
+
+<div class="auth-modal-line"></div>
+
+<div class="auth-option bank-id-option">
+<div class="auth-option-content">
+<div class="auth-option-label">Bank ID НБУ</div>
+<span class="auth-arrow">→</span>
+</div>
+</div>
+
+<div class="auth-modal-line"></div>
+
+<div class="auth-option diia-pidpys-option">
+<div class="auth-option-content">
+<div class="auth-option-label">Дія.Підпис</div>
+<span class="auth-arrow disabled-arrow">→</span>
+</div>
+<div class="auth-option-sub-options">
+<p><span class="arrow-icon-small disabled-arrow">→</span> <span class="disabled-text">Недоступно</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="site-header">
+<div class="site-logo-container">
+<img alt="Логотип" class="site-logo" src="https://biotechuniv.edu.ua/wp-content/uploads/2024/01/news-18-01-24-petytsiya.png"/>
+</div>
+<div class="site-title-block">
+<div class="site-title">ЕЛЕКТРОННІ ПЕТИЦІЇ</div>
+<div class="site-subtitle">
+                Офіційне інтернет-<br/>представництво Президента<br/>України
+            </div>
+</div>
+<div class="menu-icon-container">
+<div class="menu-icon">≡</div>
+</div>
+</div>
+<div class="header-separator"></div>
+<div class="content-block">
+<div class="breadcrumb">
+<a href="#">Головна</a> <span class="arrow">›</span>
+</div>
+<h2 class="petition-main-title-duplicate">
+            Про присвоєння звання Героя України
+            <span>(посмертно) Новікову Олександру</span>
+<span>Романовичу</span>
+</h2>
+<div class="petition-number">№22/251256-еп</div>
+<h1 class="petition-main-title">
+            Про присвоєння звання Героя України
+            <span>(посмертно) Новікову Олександру</span>
+<span>Романовичу</span>
+</h1>
+<div class="petition-details-block">
+<div class="detail-row">
+<span class="detail-icon icon-person"></span>
+<div>
+                    Автор (ініціатор): 
+                    <span>Новікова Дар'я Анатоліївна</span>
+</div>
+</div>
+<div class="detail-row">
+<span class="detail-icon icon-plus">+</span>
+<div>
+                    Дата оприлюднення: <span>07 серпня 2025</span>
+</div>
+</div>
+</div>
+<div class="petition-tabs">
+<div class="tab-item">ВІДПОВІДЬ НА ПЕТИЦІЮ</div>
+<div class="tab-item active">ТЕКСТ ПЕТИЦІЇ</div>
+<div class="tab-item"><span class="tab-item-subline">ПІДПИСАНТИ</span></div>
+</div>
+<div class="petition-text-content">
+<p>Прошу Президента України присвоїти звання Героя України (посмертно) Новікову Олександру Романовичу — воїну, батькові, патріоту, який віддав своє життя за свободу, незалежність та майбутнє нашої держави.</p>
+<p>Новіков Олександр Романович, 16.11.1989 року народження, був добровольцем, який з перших днів повномасштабного вторгнення росії у 2022 році став на захист України у лавах Збройних Сил. Служив у складі 47-ї окремої механізованої бригади. Помер в лікарні 22 липня 2025 року внаслідок важких поранень, отриманих під час бойового завдання.</p>
+<p>Олександр був не лише відданим воїном, а й люблячим батьком. Він жив своїми дітьми — Лєрою та Юрою, а діти жили ним. Його серце було сповнене любові до родини та Батьківщини, і саме ця любов надихала його до боротьби до останнього подиху.</p>
+<p>Його подвиг — це не лише прояв військової звитяги, а й глибокий приклад справжньої людяності, честі та незламності українського духу. Вважаю, що такий Герой заслуговує на найвище державне визнання.</p>
+<p>Слава Україні! Героям слава!</p>
+</div>
+<div class="petition-progress-block">
+<div class="progress-chart-container">
+<div class="progress-circle">
+<div class="progress-inner-circle">
+<div class="progress-votes-count">8393</div>
+<div class="progress-votes-info">
+                            голосів з 25000<br/>необхідних
+                        </div>
+</div>
+</div>
+</div>
+<div class="status-line">
+<span class="status-label">Статус:</span>
+<span>Триває збір підписів</span>
+</div>
+<div class="remaining-days">Залишилося 22 дні</div>
+<div class="progress-bar-container">
+<div class="progress-bar"></div>
+</div>
+<div class="auth-prompt-block">
+                Для того, щоб підтримати<br/>петицію, необхідно<br/>
+<span class="auth-link" id="openAuthModalLink">авторизуватися.</span>
+</div>
+</div>
+</div>
+<div class="post-progress-elements">
+<div class="section-title">СУТЬ ЗВЕРНЕННЯ:</div>
+<div class="petition-name-after-title">
+            Про присвоєння звання Героя України
+            <span>(посмертно) Новікову Олександру</span>
+<span>Романовичу</span>
+</div>
+<div class="section-title">ПОДІЛІТЬСЯ ПЕТИЦІЄЮ:</div>
+<div class="social-share-container">
+<a aria-label="Facebook" class="social-icon-button" href="#">
+<svg fill="#212529" height="20" viewbox="0 0 24 24" width="20"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.14 8.44 9.93v-7.03H8.1v-2.9h2.34V9.41c0-2.3 1.37-3.58 3.47-3.58.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.42v1.71h2.52l-.4 2.9h-2.12v7.03C18.34 21.21 22 17.07 22 12.07z"></path></svg>
+</a>
+<a aria-label="Twitter" class="social-icon-button" href="#">
+<svg fill="#212529" height="20" viewbox="0 0 24 24" width="20"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.18 4.18 0 001.84-2.31 8.3 8.3 0 01-2.64 1 4.13 4.13 0 00-7.03 3.76A11.7 11.7 0 013 5.1a4.13 4.13 0 001.28 5.51 4.08 4.08 0 01-1.87-.52v.05a4.13 4.13 0 003.3 4.05 4.1 4.1 0 01-1.86.07 4.14 4.14 0 003.86 2.87A8.3 8.3 0 012 19.54a11.74 11.74 0 006.29 1.84c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.36-.01-.54A8.35 8.35 0 0022.46 6z"></path></svg>
+</a>
+<a aria-label="Email" class="social-icon-button" href="#">
+<svg fill="#212529" height="22" viewbox="0 0 24 24" width="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+</a>
+</div>
+</div>
+<div class="copy-url-text">Скопіювання url петиції</div>
+</div>
+<button class="add-to-favorite-button">
+<span class="heart-icon">♡</span> ДОДАТИ В ОБРАНЕ
+    </button>
+<div class="footer-info">
+<div class="copyright-text">
+            Усі права на матеріали, розміщені на цьому
+            <span>сайті, належать Офісу Президента України.</span>
+<span>01220, м. Київ, вул. Банкова, 11</span>
+</div>
+<a class="footer-link" href="#">Урядовий портал</a>
+<a class="footer-link" href="#">Верховна Рада України</a>
+<a class="footer-link" href="#">Конституційний Суд України</a>
+<a class="footer-link" href="#">Конституція України</a>
+</div>
+
+<script>
+(function(){
+  // --- Fullscreen Menu Logic ---
+  const openMenuBtn = document.getElementById('openMenu') || document.querySelector('.menu-icon-container');
+  const fullscreenMenu = document.getElementById('fullscreenMenu');
+  const closeMenuBtn = document.getElementById('closeMenu');
+  if (openMenuBtn && fullscreenMenu) {
+    function openMenu(){ fullscreenMenu.classList.add('active'); document.body.classList.add('menu-open'); fullscreenMenu.setAttribute('aria-hidden','false'); }
+    function closeMenu(){ fullscreenMenu.classList.remove('active'); document.body.classList.remove('menu-open'); fullscreenMenu.setAttribute('aria-hidden','true'); }
+    openMenuBtn.addEventListener('click', openMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    fullscreenMenu.addEventListener('click', function(e){
+      if (e.target === fullscreenMenu) closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) closeMenu();
+    });
+  }
+
+  // --- Auth Modal Logic ---
+  const openAuthModalLink = document.getElementById('openAuthModalLink');
+  const openAuthModalBtn = document.getElementById('openAuthModalBtn');
+  const authModal = document.getElementById('authModal');
+  const closeAuthModalBtn = document.getElementById('closeAuthModal');
+  
+  if (authModal) {
+    function openAuthModal() { 
+        authModal.classList.add('active'); 
+        document.body.classList.add('menu-open'); // Reuse menu-open class for body scroll lock
+        authModal.focus(); // Focus the modal for accessibility
+    }
+    
+    function closeAuthModal() { 
+        authModal.classList.remove('active'); 
+        document.body.classList.remove('menu-open'); 
+    }
+
+    if (openAuthModalLink) openAuthModalLink.addEventListener('click', (e) => { e.preventDefault(); openAuthModal(); });
+    if (openAuthModalBtn) openAuthModalBtn.addEventListener('click', openAuthModal);
+    if (closeAuthModalBtn) closeAuthModalBtn.addEventListener('click', closeAuthModal);
+    
+    // Close on overlay click
+    authModal.addEventListener('click', function(e){
+      if (e.target === authModal
